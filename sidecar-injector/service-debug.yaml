@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: istio-sidecar-injector
+  namespace: istio-system
+spec:
+  ports:
+  - port: 443
+    protocol: TCP
+    targetPort: 443
+---
+kind: Endpoints
+apiVersion: v1
+metadata:
+  name: istio-sidecar-injector
+  namespace: istio-system
+subsets:
+  - addresses:
+      - ip: 192.168.33.1
+    ports:
+    - port: 443
+      protocol: TCP
