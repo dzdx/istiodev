@@ -7,8 +7,9 @@ RUN touch /etc/apt/apt.conf.d/proxy.conf && \
 
 RUN apt-get update
 RUN apt-get install lldb-8 vim
-RUN ln -s /home/circleci/.cache/bazel/_bazel_circleci/d9c9f96bb8903e9f03900a33f033e3c6/execroot/__main__/bazel-out/k8-dbg/bin /home/circleci/bin && \
+RUN ln -s /home/circleci/istio-proxy/bazel-out/k8-dbg/bin /home/circleci/bin && \
     echo 'settings set target.load-cwd-lldbinit true' > /home/circleci/.lldbinit && \
     chmod 666 /home/circleci/.lldbinit
+ADD certs /etc/certs
 WORKDIR /home/circleci/workspace
 USER circleci
