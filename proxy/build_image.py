@@ -58,7 +58,7 @@ try:
                 copy_file(f_path, os.path.join(tmp_dir, f_path))
     logger.info("copying cache source")
 
-    IMAGE_NAME = 'istio-debug-proxy:1.2.5'
+    IMAGE_NAME = 'dzdx/istio-debug-proxy:1.2.5'
 
     logger.info("start building")
     with open('Dockerfile.debug', 'rb') as f:
