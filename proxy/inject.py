@@ -29,6 +29,7 @@ def main():
         buf = StringIO(out)
         res = yaml.load(buf)
         if res['kind'] == 'Deployment':
+            res['spec']['template']['metadata']['annotations']['sidecar.istio.io/inject'] = 'false'
             containers = res['spec']['template']['spec']['containers']
             for container in containers:
                 if container['name'] == 'istio-proxy':
