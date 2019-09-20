@@ -1,0 +1,14 @@
+FROM istio/proxyv2:1.2.5
+
+RUN touch /etc/apt/apt.conf.d/proxy.conf && \
+    echo 'Acquire::http::Proxy "http://172.17.0.1:1087";' >> /etc/apt/apt.conf.d/proxy.conf && \
+    echo 'Acquire::https::Proxy "http://172.17.0.1:1087";' >> /etc/apt/apt.conf.d/proxy.conf
+
+RUN apt-get update
+RUN apt-get -y -f install lldb-8 vim
+
+COPY bin/envoy /usr/local/bin/envoy
+COPY cache /home/circleci/.cache
+COPY istio-proxy /home/circleci/istio-proxy
+COPY istio-envoy /home/circleci/istio-envoy
+COPY lldbinit /root/.lldbinit

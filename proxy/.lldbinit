@@ -1,3 +1,4 @@
+settings set target.load-cwd-lldbinit true
 settings set target.source-map /proc/self/cwd/external/envoy /home/circleci/istio-envoy
 settings append target.source-map /proc/self/cwd/bazel-out /home/circleci/istio-proxy/bazel-out
 settings append target.source-map /proc/self/cwd/src /home/circleci/istio-proxy/src
