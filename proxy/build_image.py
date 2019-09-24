@@ -50,13 +50,13 @@ try:
     shutil.copytree(ISTIO_PROXY_DIR, os.path.join(tmp_dir, "istio-proxy"),symlinks=True, ignore=shutil.ignore_patterns('^.git'))
     logger.info("copying istio-envoy")
     shutil.copytree(ISTIO_ENVOY_DIR, os.path.join(tmp_dir, "istio-envoy"), symlinks=True, ignore=shutil.ignore_patterns('^.git'))
+    logger.info("copying cache source")
     for root, subdirs, files in os.walk('cache', followlinks=False):
         for f in files:
             name, ext = os.path.splitext(f)
-            if ext in ('.h', '.cc', '.c', '.cpp'):
+            if ext in ('.h', '.cc', '.c', '.cpp') or os.path.islink(os.path.join(root, f)):
                 f_path = os.path.join(root, f)
                 copy_file(f_path, os.path.join(tmp_dir, f_path))
-    logger.info("copying cache source")
 
     IMAGE_NAME = 'dzdx/istio-debug-proxy:1.2.5'
 

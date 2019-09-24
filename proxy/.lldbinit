@@ -1,4 +1,6 @@
 settings set target.load-cwd-lldbinit true
-settings set target.source-map /proc/self/cwd/external/envoy /home/circleci/istio-envoy
-settings append target.source-map /proc/self/cwd/bazel-out /home/circleci/istio-proxy/bazel-out
-settings append target.source-map /proc/self/cwd/src /home/circleci/istio-proxy/src
+settings set target.source-map /proc/self/cwd/ /home/circleci/istio-proxy/bazel-istio-proxy/
+settings append target.source-map /home/circleci/.cache/bazel/_bazel_circleci/d9c9f96bb8903e9f03900a33f033e3c6/sandbox/processwrapper-sandbox/669/execroot/__main__/external /home/circleci/.cache/bazel/_bazel_circleci/d9c9f96bb8903e9f03900a33f033e3c6/execroot/__main__/external
+settings set stop-line-count-before 10
+settings set stop-line-count-after 10
+

@@ -37,6 +37,7 @@ def main():
                         'add': ['NET_ADMIN', 'SYS_PTRACE']
                     }
                     container['image'] = 'dzdx/istio-debug-proxy:1.2.5'
+                    container['resources']['limits']['memory'] = '4Gi'
                     del container['readinessProbe']
         buf = StringIO()
         yaml.dump(res, buf)
